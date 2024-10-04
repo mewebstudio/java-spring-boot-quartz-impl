@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "13d77184-4caf-4258-971b-5b04d60b4185",
+		"name": "spring-boot-quartz-impl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2079870",
+		"_collection_link": "https://lunar-capsule-667882.postman.co/workspace/Team-Workspace~4a00e7a1-03fc-466b-82c8-45cf6f1cd4c6/collection/2079870-13d77184-4caf-4258-971b-5b04d60b4185?action=share&source=collection_link&creator=2079870"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"task-id\", response.id);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test\",\n    \"group\": \"MyGroup\",\n    \"cronExpression\": \"0 * * * * ?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/tasks",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/tasks/{{task-id}}",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"tasks",
+						"{{task-id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://127.0.0.1:8080",
+			"type": "string"
+		},
+		{
+			"key": "task-id",
+			"value": ""
+		}
+	]
+}

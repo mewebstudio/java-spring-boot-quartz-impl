@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.2-bullseye
+    container_name: spring-boot-quartz-impl-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - spring-boot-quartz-impl-network
+
+volumes:
+  postgres-data:
+
+networks:
+  spring-boot-quartz-impl-network:
+    driver: bridge
