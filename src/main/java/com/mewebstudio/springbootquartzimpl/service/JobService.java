@@ -50,7 +50,7 @@ public class JobService {
      */
     public boolean unScheduleTaskJob(Task task) {
         try {
-            boolean isDeleted = scheduler.deleteJob(getJobKey(task));
+            boolean isDeleted = scheduler.deleteJob(getTaskJobKey(task));
             log.info("Task {} - {} unscheduled successfully", task.getId(), task.getName());
             return isDeleted;
         } catch (SchedulerException e) {
@@ -60,12 +60,12 @@ public class JobService {
     }
 
     /**
-     * Get JobKey
+     * Get task JobKey
      *
      * @param task Task
      * @return JobKey
      */
-    private JobKey getJobKey(Task task) {
+    private JobKey getTaskJobKey(Task task) {
         return new JobKey(task.getId().toString(), task.getGroup());
     }
 }
