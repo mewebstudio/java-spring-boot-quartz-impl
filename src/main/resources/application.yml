@@ -20,10 +20,8 @@ spring:
     url: jdbc:postgresql://${POSTGRESQL_HOST:localhost}:${POSTGRESQL_PORT:5432}/${POSTGRESQL_DB:app}
     username: ${POSTGRESQL_USER:postgres}
     password: ${POSTGRESQL_PASSWORD:secret}
-#  quartz:
-#    job-store-type: memory
   quartz:
-    job-store-type: jdbc
+    job-store-type: jdbc # jdbc, memory
     jdbc:
       initialize-schema: never
     properties:
