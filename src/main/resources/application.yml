@@ -1,17 +1,17 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 spring:
   application:
-    name: spring-boot-quartz-impl
+    name: ${SPRING_APPLICATION_NAME:app}
   jpa:
     hibernate:
       ddl-auto: ${DB_DDL_AUTO:update}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        show_sql: false
-        format_sql: true
+        show_sql: ${DB_SHOW_SQL:false}
+        format_sql: ${DB_FORMAT_SQL:false}
         globally_quoted_identifiers: true
         enable_lazy_load_no_trans: true
     open-in-view: false
