@@ -21,15 +21,15 @@ spring:
     username: ${POSTGRESQL_USER:postgres}
     password: ${POSTGRESQL_PASSWORD:secret}
   quartz:
-    job-store-type: jdbc # jdbc, memory
+    job-store-type: ${QUARTZ_JOB_STORE_TYPE:jdbc} # jdbc, memory
     jdbc:
-      initialize-schema: always # always, never
+      initialize-schema: ${QUARTZ_JDBC_INITIALIZE_SCHEMA:always} # always, never
     properties:
       org:
         quartz:
           jobStore:
             class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
             driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
-            isClustered: true
-            useProperties: false
-            tablePrefix: QRTZ_
+            isClustered: ${QUARTZ_JOB_STORE_IS_CLUSTERED:true}
+            useProperties: ${QUARTZ_JOB_STORE_USE_PROPERTIES:true}
+            tablePrefix: ${QUARTZ_JOB_STORE_TABLE_PREFIX:QRTZ_}
