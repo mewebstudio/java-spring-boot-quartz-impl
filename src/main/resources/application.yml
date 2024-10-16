@@ -23,7 +23,7 @@ spring:
   quartz:
     job-store-type: jdbc # jdbc, memory
     jdbc:
-      initialize-schema: never
+      initialize-schema: always # always, never
     properties:
       org:
         quartz:
